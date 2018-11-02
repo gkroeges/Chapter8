@@ -9,6 +9,7 @@ public class Project8_3
         double principal, initPrincipal = 0;
         double rate;
         String again;
+        String[] header = {"Year", "Princiapl", "Interest", "Total"};
         
         
         Scanner input = new Scanner(System.in);
@@ -52,15 +53,16 @@ public class Project8_3
                 }
             }
             
-            //do table headers
-
+            System.out.printf("%-6s%-16s%-16s%-16s",header[0],header[1],header[2],header[3]);
+            
             //do all of the calculations and outputs
             for(int i = 1; i <= years*4; i++)
             {
-                if(i % 4 == 1) initPrincipal = principal;
+                if(i % 4 == 1)
+                    initPrincipal = principal;
                 principal *= (1+(rate/400));
                 if(i % 4 == 0) 
-                    System.out.printf("Year %-3d$%-,15.2f$%-,15.2f$%-,15.2f%n",(i/4), initPrincipal, principal - initPrincipal, principal);
+                    System.out.printf("%-6d$%-,15.2f$%-,15.2f$%-,15.2f%n",(i/4), initPrincipal, principal - initPrincipal, principal);
             }
 
             //  checks if user wants to continue, if they say no then it breaks the loop
