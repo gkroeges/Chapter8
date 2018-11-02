@@ -6,7 +6,7 @@ public class Project8_3
     public static void main(String[] args)
     {
         int years;
-        double principal;
+        double principal, initPrincipal = 0;
         double rate;
         String again;
         
@@ -31,7 +31,7 @@ public class Project8_3
             while(true)     //loop continues until a valid double is entered
             {               //for the rate
                 try {
-                    System.out.println("Enter the interest rate as a decimal (ex: 10%% = .10)");
+                    System.out.println("Enter the interest rate as a percentage without the % sign.");
                     rate = input.nextDouble();
                     break;
                 } catch(Exception e) {
@@ -50,6 +50,17 @@ public class Project8_3
                     System.out.println("Error in number format!");
                     input.nextLine();
                 }
+            }
+            
+            //do table headers
+
+            //do all of the calculations and outputs
+            for(int i = 1; i <= years*4; i++)
+            {
+                if(i % 4 == 1) initPrincipal = principal;
+                principal *= (1+(rate/400));
+                if(i % 4 == 0) 
+                    System.out.printf("Year %-3d$%-,15.2f$%-,15.2f$%-,15.2f%n",(i/4), initPrincipal, principal - initPrincipal, principal);
             }
 
             //  checks if user wants to continue, if they say no then it breaks the loop
